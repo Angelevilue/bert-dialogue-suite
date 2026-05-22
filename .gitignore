@@ -29,6 +29,10 @@ __pycache__/
 deploy/*/checkpoint/
 deploy/*/checkpoint/onnx/
 
+# Data output (large files)
+data/rejection_output/*.tar.gz
+data/rejection_output/*/
+
 # IDE
 .vscode/
 .idea/
