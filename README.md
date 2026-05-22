@@ -148,6 +148,14 @@ For detailed deployment guide, see [`deploy/rejector/README.md`](deploy/rejector
 3. Implement data generation templates in `generate_data.py`
 4. Run `python ner/train.py --train_data ... --val_data ...`
 
+## Roadmap
+
+| Module | Status | Description |
+|--------|--------|-------------|
+| `rejector/` | **Done** | 5-class rejection filter (deployed on VLA_Robot family robots) |
+| `intent_router/` | In Progress | Intent classification and routing |
+| `visual_detector/` | Planned | Visual vs non-visual question detection |
+
 ## License
 
 MIT

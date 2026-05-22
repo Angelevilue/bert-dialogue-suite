@@ -149,6 +149,14 @@ python deploy/rejector/export_onnx.py --precision fp16
 3. 在 `generate_data.py` 中实现数据生成模板
 4. 运行 `python ner/train.py --train_data ... --val_data ...`
 
+## 开发路线
+
+| 模块 | 状态 | 说明 |
+|------|------|------|
+| `rejector/` | **已完成** | 5 类拒识模块（已部署在 VLA_Robot 家庭机器人） |
+| `intent_router/` | 开发中 | 意图识别与分流 |
+| `visual_detector/` | 计划中 | 视觉问题判断（区分视觉类和非视觉类问题） |
+
 ## License
 
 MIT
