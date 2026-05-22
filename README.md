@@ -2,6 +2,12 @@
 
 A modular BERT fine-tuning suite for Chinese dialogue systems, supporting multi-task text classification and NER (planned).
 
+## Introduction
+
+**bert-dialogue-suite** is a production-ready fine-tuning framework for building dialogue system modules. It uses a monorepo structure where shared training/inference utilities live in `core/`, while each task module owns its own data generation templates, label mappings, and training configuration.
+
+Currently, the **rejector module** is production-ready, deployed on family robots (VLA_Robot) to filter unsafe, incomplete, or ambiguous user inputs before they reach the downstream dialogue engine. The framework is designed to be easily extensible for new classification tasks.
+
 ## Modules
 
 | Module | Status | Description |
