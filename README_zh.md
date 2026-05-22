@@ -25,8 +25,17 @@ BERT 对话系统多任务微调套件，支持多分类文本分类，未来计
 │   ├── config.py                   # 标签映射与模型配置
 │   ├── train.py                    # 训练入口
 │   ├── generate_data.py            # 合成数据生成器
-│   └── docs/                       # 详细手册
+│   └── docs/                       # 详细手册（中文）
+│       ├── BERT模型微调手册.md      # 微调指南
+│       └── 数据构造和生成手册.md     # 数据构造指南
 ├── deploy/rejector/                # 部署包（ONNX/HTTP/ROS2）
+│   ├── checkpoint/                  # 模型权重和 tokenizer（已 gitignore）
+│   ├── checkpoint/onnx/             # ONNX 模型（FP32/FP16/INT8）
+│   ├── service.py                   # HTTP API（PyTorch 版）
+│   ├── service_onnx.py             # HTTP API（ONNX Runtime 版）
+│   ├── export_onnx.py              # ONNX 导出脚本
+│   ├── client_ros2.py              # ROS2 客户端
+│   └── start_service.sh            # 统一启动脚本
 ├── intent_router/                  # 意图识别分流（骨架）
 ├── visual_detector/                # 视觉问题判断（骨架）
 ├── models/                         # 预训练模型（已加入 .gitignore）

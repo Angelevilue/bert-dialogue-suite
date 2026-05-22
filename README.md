@@ -26,7 +26,15 @@ A modular BERT fine-tuning suite for Chinese dialogue systems, supporting multi-
 │   ├── train.py                    # Training entrypoint
 │   ├── generate_data.py            # Synthetic data generator
 │   └── docs/                       # Detailed manuals (Chinese)
+│       ├── BERT模型微调手册.md      # Fine-tuning guide
+│       └── 数据构造和生成手册.md     # Data construction guide
 ├── deploy/rejector/                # Deployment package (ONNX/HTTP/ROS2)
+│   ├── checkpoint/onnx/             # ONNX models (FP32/FP16/INT8)
+│   ├── service.py                   # HTTP API (PyTorch)
+│   ├── service_onnx.py             # HTTP API (ONNX Runtime)
+│   ├── export_onnx.py              # ONNX export script
+│   ├── client_ros2.py              # ROS2 client
+│   └── start_service.sh            # Unified launch script
 ├── intent_router/                  # Intent routing module (skeleton)
 ├── visual_detector/                # Visual question detector (skeleton)
 ├── models/                         # Pretrained models (gitignored)
