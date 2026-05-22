@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is **bert-dialogue-suite**, a modular BERT fine-tuning suite for Chinese dialogue systems. It currently contains one production-ready module and two skeleton modules:
+This is **bert-dialogue-suite**, a modular BERT fine-tuning suite for Chinese dialogue systems. It currently contains one production-ready module and two planned modules:
 
-- **`rejector/`** — 5-class text classification rejection module (拒识模块) for a Chinese family robot dialogue system (VLA_Robot). Labels: `unsafe`, `non_dialogue`, `waiting`, `ready`, `confused`.
-- **`intent_router/`** — Skeleton for intent classification and routing.
-- **`visual_detector/`** — Skeleton for visual vs non-visual question detection.
+- **`rejector/`** — 5-class text classification rejection module (拒识模块) for a Chinese family robot dialogue system (VLA_Robot). Labels: `unsafe`, `non_dialogue`, `waiting`, `ready`, `confused`. Deployed on VLA_Robot family robots.
+- **`intent_router/`** — Skeleton for intent classification and routing (in progress).
+- **`visual_detector/`** — Skeleton for visual vs non-visual question detection (planned).
 
 The repository follows a **monorepo** structure: shared training/inference/data utilities live in `core/`, while each task module owns its own data generation templates, label mappings, and training configuration.
 
@@ -43,9 +43,9 @@ Defaults output to `./dataset/` with ~5600 samples and 35% multi-turn context ra
 
 ```bash
 python rejector/train.py \
-    --train_data family_robot_dataset/train.jsonl \
-    --val_data family_robot_dataset/val.jsonl \
-    --test_data family_robot_dataset/test.jsonl \
+    --train_data dataset/train.jsonl \
+    --val_data dataset/val.jsonl \
+    --test_data dataset/test.jsonl \
     --output_dir ./output
 ```
 
@@ -106,6 +106,16 @@ Each module contains:
 - `generate_data.py` — task-specific synthetic data generation with templates and fillers
 - `README.md` — module-level documentation
 
+### Deployment Package (`deploy/rejector/`)
+
+- `service.py` — HTTP API service (PyTorch backend)
+- `service_onnx.py` — HTTP API service (ONNX Runtime backend, faster and lighter)
+- `export_onnx.py` — Export trained model to ONNX format (FP32/FP16/INT8)
+- `start_service.sh` — Unified launch script (PyTorch by default, `--onnx` for ONNX mode)
+- `client_ros2.py` — ROS2 client for integrating with robot systems
+- `checkpoint/` — Model weights and tokenizer (gitignored)
+- `checkpoint/onnx/` — Exported ONNX models (gitignored)
+
 ### Reference Documentation
 
 Detailed Chinese manuals exist in `rejector/docs/` and should be consulted for parameter tuning, data construction rules, and deployment integration patterns:
@@ -118,3 +128,4 @@ Detailed Chinese manuals exist in `rejector/docs/` and should be consulted for p
 - **`[SEP]` handling must match** between `core.dataset.DialogueDataset.__getitem__` and `core.predictor.BertPredictor.predict`. The splitting logic (`text.split(" [SEP] ")`) and tokenizer arguments (`text` + `text_pair`) are duplicated and must remain identical.
 - **No formal package installation required**: `core/` is a plain directory of modules. Task scripts use `sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))` to import `core`. This preserves the "run directly" philosophy.
 - **Each module is self-contained**: A module's `train.py` and `generate_data.py` must be runnable from the repo root without cross-importing other modules (except `core`).
+- **Model weights and data files are gitignored**: All `*.safetensors`, `*.onnx`, `*.jsonl`, `dataset/`, `output/`, and `deploy/*/checkpoint/` are excluded from version control.
