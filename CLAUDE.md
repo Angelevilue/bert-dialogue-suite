@@ -118,9 +118,9 @@ Each module contains:
 
 ### Reference Documentation
 
-Detailed Chinese manuals exist in `rejector/docs/` and should be consulted for parameter tuning, data construction rules, and deployment integration patterns:
-- `rejector/docs/BERT模型微调手册.md`: training parameters, evaluation metrics, deployment examples (REST API, async, filter integration).
-- `rejector/docs/数据构造和生成手册.md`: label definitions, data format spec, per-category construction rules, quality checks, and extension guidelines.
+Detailed manuals exist in `rejector/docs/` and should be consulted for parameter tuning, data construction rules, and deployment integration patterns:
+- `rejector/docs/Fine-tuning Guide.md`: training parameters, evaluation metrics, deployment examples (REST API, async, filter integration).
+- `rejector/docs/Data Construction Guide.md`: label definitions, data format spec, per-category construction rules, quality checks, and extension guidelines.
 
 ## Critical Invariants
 

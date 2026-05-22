@@ -32,8 +32,8 @@ deploy/rejector/
 ## 相关文档
 
 训练和微调详细说明见 [`rejector/docs/`](https://github.com/Angelevilue/bert-dialogue-suite/tree/main/rejector/docs)：
-- `BERT模型微调手册.md` — 微调参数、评估指标、部署示例
-- `数据构造和生成手册.md` — 数据格式规范、各类别构造规则、质量检查
+- `Fine-tuning Guide.md` — 微调参数、评估指标、部署示例
+- `Data Construction Guide.md` — 数据格式规范、各类别构造规则、质量检查
 
 ## 依赖安装
 

@@ -31,9 +31,9 @@ Currently, the **rejector module** is production-ready, deployed on family robot
 │   ├── config.py                   # Label maps & model configuration
 │   ├── train.py                    # Training entrypoint
 │   ├── generate_data.py            # Synthetic data generator
-│   └── docs/                       # Detailed manuals (Chinese)
-│       ├── BERT模型微调手册.md      # Fine-tuning guide
-│       └── 数据构造和生成手册.md     # Data construction guide
+│   └── docs/                       # Detailed manuals
+│       ├── Fine-tuning Guide.md     # Training parameters & deployment
+│       └── Data Construction Guide.md # Data format & construction rules
 ├── deploy/rejector/                # Deployment package (ONNX/HTTP/ROS2)
 │   ├── checkpoint/onnx/             # ONNX models (FP32/FP16/INT8)
 │   ├── service.py                   # HTTP API (PyTorch)

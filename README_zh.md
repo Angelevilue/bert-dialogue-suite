@@ -31,9 +31,9 @@ BERT 对话系统多任务微调套件，支持多分类文本分类，未来计
 │   ├── config.py                   # 标签映射与模型配置
 │   ├── train.py                    # 训练入口
 │   ├── generate_data.py            # 合成数据生成器
-│   └── docs/                       # 详细手册（中文）
-│       ├── BERT模型微调手册.md      # 微调指南
-│       └── 数据构造和生成手册.md     # 数据构造指南
+│   └── docs/                       # 详细手册
+│       ├── Fine-tuning Guide.md     # 微调参数与部署
+│       └── Data Construction Guide.md # 数据格式与构造规则
 ├── deploy/rejector/                # 部署包（ONNX/HTTP/ROS2）
 │   ├── checkpoint/                  # 模型权重和 tokenizer（已 gitignore）
 │   ├── checkpoint/onnx/             # ONNX 模型（FP32/FP16/INT8）
